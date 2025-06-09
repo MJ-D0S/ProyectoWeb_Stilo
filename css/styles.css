@@ -1,0 +1,40 @@
+/* Estilos generales para el contenedor de productos */
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* Estilo para cada producto */
+.producto {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+/* Estilo para las imágenes de los productos */
+.producto img {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 4px; /* Bordes redondeados para las imágenes */
+}
+
+/* Estilo para el botón de agregar al carrito */
+.boton-agregar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-agregar:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}

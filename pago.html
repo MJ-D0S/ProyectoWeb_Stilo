@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stilø | Método de Pago</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/pago.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside>
+        <header>
+          <h1 class="logo">Stilø</h1>
+        </header>
+        <nav>
+          <ul class="menu">
+            <li>
+              <a href="carrito.html" class="boton-menu boton-volver">
+                <i class="bi bi-arrow-left"></i>
+                Volver al carrito
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <footer>
+          <p class="texto-footer">© 2025 Juan Jose Hernandez Garcia</p>
+        </footer>
+      </aside>
+
+      <main>
+        <h2 class="titulo-principal">Finalizar Pago</h2>
+        <div class="pago-container">
+          <!-- FORMULARIO DE PAGO -->
+          <form id="formulario-pago" class="pago-formulario">
+            <h3>Contacto</h3>
+            <input type="email" placeholder="Correo electrónico" required />
+
+            <h3>Entrega</h3>
+            <select required>
+              <option value="">País / Región</option>
+              <option value="MX">México</option>
+            </select>
+            <input type="text" placeholder="Nombre" required />
+            <input type="text" placeholder="Apellidos" required />
+            <input type="text" placeholder="Dirección" required />
+            <input type="text" placeholder="Ciudad" required />
+            <input type="text" placeholder="Estado" required />
+            <input
+              type="text"
+              id="codigo-postal"
+              placeholder="Código postal"
+              maxlength="5"
+              required
+            />
+            <input
+              type="tel"
+              id="telefono"
+              placeholder="Teléfono"
+              maxlength="10"
+              required
+            />
+
+            <h3>Pago</h3>
+            <input
+              type="text"
+              id="numero-tarjeta"
+              placeholder="Número de tarjeta"
+              maxlength="16"
+              required
+            />
+            <input
+              type="text"
+              id="vencimiento"
+              placeholder="MM/AA"
+              maxlength="5"
+              required
+            />
+            <input
+              type="text"
+              id="codigo-seguridad"
+              placeholder="Código de seguridad"
+              maxlength="3"
+              required
+            />
+            <input type="text" placeholder="Nombre del titular" required />
+
+            <button type="submit" class="boton-pagar">Pagar ahora</button>
+          </form>
+
+          <!-- RESUMEN DEL PEDIDO -->
+          <section class="resumen-pedido">
+            <h3>Resumen del pedido</h3>
+            <div id="detalle-pedido">
+              <!-- Se genera dinámicamente con JavaScript -->
+            </div>
+            <div class="resumen-totales">
+              <p>
+                <strong>Subtotal:</strong>
+                <span id="resumen-subtotal">$0.00</span>
+              </p>
+              <p>
+                <strong>Envío:</strong> <span id="resumen-envio">$0.00</span>
+              </p>
+              <p>
+                <strong>Total:</strong> <span id="resumen-total">$0.00</span>
+              </p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./js/pago.js"></script>
+  </body>
+</html>

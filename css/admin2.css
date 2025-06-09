@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --clr-main: #007BFF;
+  --clr-main-light: #A8D0FF;
+  --clr-white: #F5F9FF;
+  --clr-gray:  #D0E2FF;
+  --clr-red:   #0056B3;
+  --clr-text-dark: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  background-color: var(--clr-main);
+  min-height: 100vh;
+}
+
+aside {
+  padding: 2rem;
+  padding-right: 0;
+  color: var(--clr-white);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--clr-main);
+}
+
+.header-mobile {
+  display: none;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-mobile .logo {
+  color: var(--clr-white);
+}
+
+.open-menu, .close-menu {
+  background-color: transparent;
+  color: var(--clr-white);
+  border: 0;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close-menu {
+  display: none;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 2.25rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.boton-menu {
+  background-color: transparent;
+  border: 0;
+  color: var(--clr-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  padding: 1rem;
+  font-size: .85rem;
+  width: 100%;
+}
+
+.boton-menu.active {
+  background-color: var(--clr-white);
+  color: var(--clr-main);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  position: relative;
+}
+
+.boton-menu.active::before,
+.boton-menu.active::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 2rem;
+  background-color: transparent;
+  
+}
+
+.boton-menu.active::before {
+  bottom: 100%;
+  right: 0;
+  border-bottom-right-radius: .5rem;
+}
+
+.boton-menu.active::after {
+  top: 100%;
+  right: 0;
+  border-top-right-radius: .5rem;
+}
+
+.texto-footer {
+  color: var(--clr-main-light);
+  font-size: .85rem;
+}
+
+main {
+  background-color: var(--clr-white);
+  margin: 1rem;
+  margin-left: 0;
+  border-radius: 2rem;
+  padding: 3rem;
+}
+
+.titulo-principal {
+  color: var(--clr-main);
+  margin-bottom: 2rem;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.admin-form {
+  background-color: var(--clr-gray);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+
+.admin-form label {
+  color: var(--clr-text-dark);
+  font-weight: 500;
+}
+
+.admin-form input,
+.admin-form select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.boton-pagar {
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-pagar:hover {
+  background-color: var(--clr-red);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background-color: var(--clr-gray);
+  border-radius: 1rem;
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.table-wrapper th {
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+}
+
+.table-wrapper tr:nth-child(even) {
+  background-color: var(--clr-main-light);
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    background-color: var(--clr-main);
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.75);
+    transition: .2s;
+  }
+
+  .aside-visible {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header-mobile {
+    display: flex;
+  }
+
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  main {
+    margin: 1rem;
+    padding: 2rem;
+  }
+}

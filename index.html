@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stilø</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header-mobile">
+        <h1 class="logo">Stilø</h1>
+        <button class="open-menu" id="open-menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </header>
+      <aside>
+        <button class="close-menu" id="close-menu">
+          <i class="bi bi-x"></i>
+        </button>
+        <header>
+          <h1 class="logo">Stilø</h1>
+        </header>
+
+        <div id="usuario-conectado" style="display: none;">
+          <p id="bienvenida" class="mensaje-bienvenida"></p>
+          <button id="btnLogout" class="boton-menu boton-logout">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </button>
+        </div>
+
+        <a class="boton-menu boton-login-admin" href="login.html" id="btnLogin">
+          <i class="bi bi-person-circle"></i> Iniciar sesión
+        </a>
+
+        <a class="boton-menu boton-login-admin" href="loginadmin.html" id="btnVendedor">
+          <i class="bi bi-bag-fill"></i> ¿Eres Vendedor?
+        </a>
+
+        <nav>
+          <ul class="menu">
+            <li>
+              <button id="todos" class="boton-menu boton-categoria active">
+                <i class="bi bi-hand-index-thumb-fill"></i> Todos los productos
+              </button>
+            </li>
+            <li>
+              <button id="abrigos" class="boton-menu boton-categoria">
+                <span class="icono-categoria">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" class="icon icon-tabler icon-tabler-jacket">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M16 3l-4 5l-4 -5" />
+                    <path d="M12 19a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-8.172a2 2 0 0 1 .586 -1.414l.828 -.828a2 2 0 0 0 .586 -1.414v-2.172a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v2.172a2 2 0 0 0 .586 1.414l.828 .828a2 2 0 0 1 .586 1.414v8.172a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z" />
+                    <path d="M20 13h-3a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" />
+                    <path d="M4 17h3a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-3" />
+                    <path d="M12 19v-11" />
+                  </svg>
+                </span>
+                Abrigos
+              </button>
+            </li>
+            <li>
+              <button id="camisetas" class="boton-menu boton-categoria">
+                <span class="icono-categoria">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" class="icon icon-tabler icon-tabler-shirt">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
+                  </svg>
+                </span>
+                Camisetas
+              </button>
+            </li>
+            <li>
+              <button id="pantalones" class="boton-menu boton-categoria">
+                <span class="icono-categoria">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"
+                       stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="14" y="6" width="36" height="6" rx="1" />
+                    <path d="M16 12 L16 58 Q16 60 18 60 L26 60 Q28 60 28 58 L32 30 L36 58 Q36 60 38 60 L46 60 Q48 60 48 58 L48 12" />
+                    <line x1="32" y1="12" x2="32" y2="30" />
+                    <path d="M16 12 Q20 20 28 12" />
+                    <path d="M48 12 Q44 20 36 12" />
+                  </svg>
+                </span>
+                Pantalones
+              </button>
+            </li>
+            <li>
+              <a class="boton-menu boton-carrito" href="./carrito.html">
+                <i class="bi bi-cart-fill"></i> Carrito
+                <span id="numerito" class="numerito">0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <footer>
+          <p class="texto-footer">© 2025 Juan Jose Hernandez Garcia</p>
+        </footer>
+      </aside>
+      <main>
+        <h2 class="titulo-principal" id="titulo-principal">
+          Todos los productos
+        </h2>
+        <div id="contenedor-productos" class="contenedor-productos">
+          <!-- Esto se va a rellenar con JS -->
+        </div>
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/productos.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/menu.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const botones = document.querySelectorAll(".boton-categoria");
+        botones.forEach(boton => {
+          boton.addEventListener("click", () => {
+            botones.forEach(b => b.classList.remove("active"));
+            boton.classList.add("active");
+            const categoria = boton.id;
+            if (categoria === "todos") {
+              mostrarTodos();
+            } else {
+              mostrarCategoria(categoria);
+            }
+          });
+        });
+        mostrarTodos();
+      });
+    </script>
+  </body>
+</html>

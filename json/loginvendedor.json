@@ -1,0 +1,34 @@
+{
+  "function": {
+    "iniciarSesion": {
+      "event": {
+        "preventDefault": true
+      },
+      "email": {
+        "value": "document.getElementById('email').value"
+      },
+      "password": {
+        "value": "document.getElementById('password').value"
+      },
+      "credentials": {
+        "valid": {
+          "email": "usuario@example.com",
+          "password": "contraseña"
+        },
+        "invalid": {
+          "message": "Credenciales incorrectas. Inténtalo de nuevo."
+        }
+      },
+      "redirect": {
+        "url": "admin2.html"
+      }
+    }
+  },
+  "eventListener": {
+    "DOMContentLoaded": {
+      "target": "document",
+      "event": "submit",
+      "handler": "iniciarSesion"
+    }
+  }
+}

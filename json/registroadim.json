@@ -1,0 +1,16 @@
+{
+  "registro": {
+    "fields": ["nombre", "apellido", "email", "password"],
+    "validation": {
+      "required": true,
+      "minLength": 3
+    },
+    "onSuccess": {
+      "message": "Registro exitoso",
+      "redirect": "login.html"
+    },
+    "onFailure": {
+      "message": "Error al registrar. Intenta nuevamente."
+    }
+  }
+}

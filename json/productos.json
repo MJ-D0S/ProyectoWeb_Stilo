@@ -1,0 +1,129 @@
+[
+    {
+      "id": "abrigo-01",
+      "titulo": "Puffer Azul Marino",
+      "imagen": "./img/abrigos/01.jpg",
+      "categoria": { "nombre": "Abrigos", "id": "abrigos" },
+      "precio": 396.00
+    },
+    {
+      "id": "abrigo-02",
+      "titulo": "Blazer Casual Negro",
+      "imagen": "./img/abrigos/02.jpg",
+      "categoria": { "nombre": "Abrigos", "id": "abrigos" },
+      "precio": 396.00
+    },
+    {
+      "id": "abrigo-03",
+      "titulo": "Chamarra Gris Urbano",
+      "imagen": "./img/abrigos/03.jpg",
+      "categoria": { "nombre": "Abrigos", "id": "abrigos" },
+      "precio": 451.00
+    },
+    {
+      "id": "abrigo-04",
+      "titulo": "Puffer Negro Matte",
+      "imagen": "./img/abrigos/04.jpg",
+      "categoria": { "nombre": "Abrigos", "id": "abrigos" },
+      "precio": 396.99
+    },
+    {
+      "id": "abrigo-05",
+      "titulo": "Sudadera con Cierre Térmica",
+      "imagen": "./img/abrigos/05.jpg",
+      "categoria": { "nombre": "Abrigos", "id": "abrigos" },
+      "precio": 396.98
+    },
+    {
+      "id": "camiseta-01",
+      "titulo": "Camiseta Azul Oscuro Clásica",
+      "imagen": "./img/camisetas/01.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 99.99
+    },
+    {
+      "id": "camiseta-02",
+      "titulo": "Camiseta Blanca Tropical",
+      "imagen": "./img/camisetas/02.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 107.00
+    },
+    {
+      "id": "camiseta-03",
+      "titulo": "Camiseta Celeste Estilo Playa",
+      "imagen": "./img/camisetas/03.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 105.00
+    },
+    {
+      "id": "camiseta-04",
+      "titulo": "Camiseta Roja Clásica",
+      "imagen": "./img/camisetas/04.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 95.00
+    },
+    {
+      "id": "camiseta-05",
+      "titulo": "Camiseta Café Oscuro Casual",
+      "imagen": "./img/camisetas/05.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 91.00
+    },
+    {
+      "id": "camiseta-06",
+      "titulo": "Camiseta Roja Vibrante",
+      "imagen": "./img/camisetas/06.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 99.99
+    },
+    {
+      "id": "camiseta-07",
+      "titulo": "Camiseta Verde Militar",
+      "imagen": "./img/camisetas/07.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 105.00
+    },
+    {
+      "id": "camiseta-08",
+      "titulo": "Camiseta Azul Claro",
+      "imagen": "./img/camisetas/08.jpg",
+      "categoria": { "nombre": "Camisetas", "id": "camisetas" },
+      "precio": 99.99
+    },
+    {
+      "id": "pantalon-01",
+      "titulo": "Pantalón Beige Casual",
+      "imagen": "./img/pantalones/01.jpg",
+      "categoria": { "nombre": "Pantalones", "id": "pantalones" },
+      "precio": 160.00
+    },
+    {
+      "id": "pantalon-02",
+      "titulo": "Pantalón Blanco Formal",
+      "imagen": "./img/pantalones/02.jpg",
+      "categoria": { "nombre": "Pantalones", "id": "pantalones" },
+      "precio": 360.99
+    },
+    {
+      "id": "pantalon-03",
+      "titulo": "Pantalón Negro Skinny",
+      "imagen": "./img/pantalones/03.jpg",
+      "categoria": { "nombre": "Pantalones", "id": "pantalones" },
+      "precio": 360.99
+    },
+    {
+      "id": "pantalon-04",
+      "titulo": "Pantalón de Vestir Negro",
+      "imagen": "./img/pantalones/04.jpg",
+      "categoria": { "nombre": "Pantalones", "id": "pantalones" },
+      "precio": 396.00
+    },
+    {
+      "id": "pantalon-05",
+      "titulo": "Pantalón Verde Olivo Formal",
+      "imagen": "./img/pantalones/05.jpg",
+      "categoria": { "nombre": "Pantalones", "id": "pantalones" },
+      "precio": 396.99
+    }
+  ]
+  

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro - Stilø</title>
+  <!-- Enlazando iconos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <!-- Enlazando estilos de Toastify para notificaciones -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <!-- Enlazando estilos personalizados -->
+  <link rel="stylesheet" href="./css/registroadmin.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>Stilø | Ventas</h1>
+    <h2><i class="bi bi-person-plus"></i> Registrarse</h2>
+    <!-- Formulario de registro -->
+    <form id="registroForm">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <!-- Campo para el nombre del usuario -->
+        <input type="text" name="nombre" id="nombre" required />
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <!-- Campo para el apellido del usuario -->
+        <input type="text" name="apellido" id="apellido" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <!-- Campo para el correo electrónico del usuario -->
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <!-- Campo para la contraseña del usuario -->
+        <input type="password" name="password" id="password" required />
+      </div>
+      <!-- Botón para enviar el formulario -->
+      <button class="btn" type="submit">Registrarse</button>
+    </form>
+    <div class="link">
+      <!-- Enlace para redirigir a la página de inicio de sesión -->
+      ¿Ya tienes cuenta? <a href="loginadmin.html">Inicia sesión</a>
+    </div>
+  </div>
+
+<!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Enlazando el archivo JavaScript que maneja el registro -->
+  <script src="./js/registroadmin.js"></script>
+</body>
+</html>
