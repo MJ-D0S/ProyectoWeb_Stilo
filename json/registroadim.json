@@ -7,7 +7,7 @@
     },
     "onSuccess": {
       "message": "Registro exitoso",
-      "redirect": "login.html"
+      "redirect": "loginadmin.html"
     },
     "onFailure": {
       "message": "Error al registrar. Intenta nuevamente."

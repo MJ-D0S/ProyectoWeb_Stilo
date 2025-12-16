@@ -4,28 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Iniciar Sesión - Stilø</title>
-
-  <!-- Iconos de Bootstrap para los íconos del formulario -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-
-  <!-- Estilos de notificaciones Toastify -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-
-  <!-- Estilos personalizados para el formulario -->
   <link rel="stylesheet" href="./css/loginadmin.css" />
+  <style>
+    /* Controla el tamaño del recuadro principal */
+    .form-container {
+      max-width: 350px !important; /* !important fuerza el ancho */
+      padding: 20px 30px !important; /* Reduce el espacio interno superior/inferior */
+      margin: 5vh auto !important; /* Centra con menos margen superior */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    /* Reduce el espacio entre campos */
+    .form-group {
+      margin-bottom: 10px !important; 
+    }
+    /* Reduce el espacio interno del input */
+    .form-container input[type="email"], 
+    .form-container input[type="password"] {
+      padding: 8px !important; 
+      height: 38px !important; 
+    }
+    /* Reduce el margen superior del botón */
+    .btn {
+      margin-top: 15px !important; 
+    }
+  </style>
 </head>
 <body>
   <div class="form-container">
     <h1>Stilø | Ventas</h1>
     <h2><i class="bi bi-person"></i> Inicia Sesión</h2>
-
-    <!-- Formulario de inicio de sesión -->
     <form id="loginForm">
       <div class="form-group">
         <label for="email">Correo electrónico</label>
         <input type="email" name="email" id="email" required />
       </div>
-
       <div class="form-group">
         <label for="password">Contraseña</label>
         <input type="password" name="password" id="password" required />
@@ -39,8 +53,28 @@
     </div>
   </div>
 
-  <!-- Scripts necesarios -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDyfxPBw2xOu318mAtdYM03G_DmdZMPa1E",
+      authDomain: "e-commerce-b80a9.firebaseapp.com",
+      databaseURL: "https://e-commerce-b80a9-default-rtdb.firebaseio.com",
+      projectId: "e-commerce-b80a9",
+      storageBucket: "e-commerce-b80a9.firebasestorage.app",
+      messagingSenderId: "708561821036",
+      appId: "1:708561821036:web:5e1811527bdaee9a6fa749",
+      measurementId: "G-RDLKX5XZ30"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(); 
+    const auth = firebase.auth();
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script src="./js/loginadmin.js"></script> <!-- Archivo que contiene la lógica de validación -->
+  <script src="./js/loginadmin.js"></script>
 </body>
 </html>
+

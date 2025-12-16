@@ -55,10 +55,7 @@
                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
                        stroke-linejoin="round" class="icon icon-tabler icon-tabler-jacket">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M16 3l-4 5l-4 -5" />
                     <path d="M12 19a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-8.172a2 2 0 0 1 .586 -1.414l.828 -.828a2 2 0 0 0 .586 -1.414v-2.172a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v2.172a2 2 0 0 0 .586 1.414l.828 .828a2 2 0 0 1 .586 1.414v8.172a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z" />
-                    <path d="M20 13h-3a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" />
-                    <path d="M4 17h3a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-3" />
                     <path d="M12 19v-11" />
                   </svg>
                 </span>
@@ -86,8 +83,6 @@
                     <rect x="14" y="6" width="36" height="6" rx="1" />
                     <path d="M16 12 L16 58 Q16 60 18 60 L26 60 Q28 60 28 58 L32 30 L36 58 Q36 60 38 60 L46 60 Q48 60 48 58 L48 12" />
                     <line x1="32" y1="12" x2="32" y2="30" />
-                    <path d="M16 12 Q20 20 28 12" />
-                    <path d="M48 12 Q44 20 36 12" />
                   </svg>
                 </span>
                 Pantalones
@@ -116,10 +111,35 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script>
+      // Tu configuración de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDyfxPBw2xOu318mAtdYM03G_DmdZMPa1E",
+        authDomain: "e-commerce-b80a9.firebaseapp.com",
+        databaseURL: "https://e-commerce-b80a9-default-rtdb.firebaseio.com",
+        projectId: "e-commerce-b80a9",
+        storageBucket: "e-commerce-b80a9.firebasestorage.app",
+        messagingSenderId: "708561821036",
+        appId: "1:708561821036:web:5e1811527bdaee9a6fa749",
+        measurementId: "G-RDLKX5XZ30"
+      };
+
+      // Inicializar Firebase (y hacerlo accesible globalmente)
+      firebase.initializeApp(firebaseConfig);
+
+      // Instancias GLOBALES para usar en tus scripts JS
+      const db = firebase.firestore();
+      const auth = firebase.auth();
+
+      console.log("Conexión a Firestore y Auth lista.");
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="./js/index.js"></script>
     <script src="./js/productos.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/sesion.js"></script>
     <script src="./js/menu.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -130,13 +150,13 @@
             boton.classList.add("active");
             const categoria = boton.id;
             if (categoria === "todos") {
-              mostrarTodos();
+              mostrarTodos(); // Función para mostrar todos los productos
             } else {
-              mostrarCategoria(categoria);
+              mostrarCategoria(categoria); // Función para mostrar productos por categoría
             }
           });
         });
-        mostrarTodos();
+        mostrarTodos(); // Muestra todos los productos al cargar la página
       });
     </script>
   </body>

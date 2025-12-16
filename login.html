@@ -7,6 +7,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
   <link rel="stylesheet" href="./css/login.css" />
+  <style>
+    /* Controla el tamaño del recuadro principal */
+    .form-container {
+      max-width: 350px !important; /* !important fuerza el ancho */
+      padding: 20px 30px !important; /* Reduce el espacio interno superior/inferior */
+      margin: 5vh auto !important; /* Centra con menos margen superior */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    /* Reduce el espacio entre campos */
+    .form-group {
+      margin-bottom: 10px !important; 
+    }
+    /* Reduce el espacio interno del input */
+    .form-container input[type="email"], 
+    .form-container input[type="password"] {
+      padding: 8px !important; 
+      height: 38px !important; 
+    }
+    /* Reduce el margen superior del botón */
+    .btn {
+      margin-top: 15px !important; 
+    }
+  </style>
 </head>
 <body>
   <div class="form-container">
@@ -27,7 +50,28 @@
       ¿No tienes cuenta? <a href="registro.html">Regístrate</a>
     </div>
   </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDyfxPBw2xOu318mAtdYM03G_DmdZMPa1E",
+      authDomain: "e-commerce-b80a9.firebaseapp.com",
+      databaseURL: "https://e-commerce-b80a9-default-rtdb.firebaseio.com",
+      projectId: "e-commerce-b80a9",
+      storageBucket: "e-commerce-b80a9.firebasestorage.app",
+      messagingSenderId: "708561821036",
+      appId: "1:708561821036:web:5e1811527bdaee9a6fa749",
+      measurementId: "G-RDLKX5XZ30"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(); 
+    const auth = firebase.auth();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="./js/login.js"></script>
-  <!-- Se elimina el atributo action="login.php", para agregar el <script src="./js/login.js"></script> -->
 </body>
 </html>
