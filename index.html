@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,155 +9,201 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="wrapper">
-      <header class="header-mobile">
-        <h1 class="logo">Stilø</h1>
-        <button class="open-menu" id="open-menu">
-          <i class="bi bi-list"></i>
-        </button>
-      </header>
-      <aside>
-        <button class="close-menu" id="close-menu">
-          <i class="bi bi-x"></i>
-        </button>
-        <header>
-          <h1 class="logo">Stilø</h1>
+        <header class="header-mobile">
+            <h1 class="logo">Stilø</h1>
+            <button class="open-menu" id="open-menu">
+                <i class="bi bi-list"></i>
+            </button>
         </header>
+        <aside>
+            <button class="close-menu" id="close-menu">
+                <i class="bi bi-x"></i>
+            </button>
+            <header>
+                <h1 class="logo">Stilø</h1>
+            </header>
 
-        <div id="usuario-conectado" style="display: none;">
-          <p id="bienvenida" class="mensaje-bienvenida"></p>
-          <button id="btnLogout" class="boton-menu boton-logout">
-            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-          </button>
-        </div>
+            <div id="usuario-conectado" style="display: none;">
+                <p id="bienvenida" class="mensaje-bienvenida"></p>
+                <button id="btnLogout" class="boton-menu boton-logout">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                </button>
+            </div>
 
-        <a class="boton-menu boton-login-admin" href="login.html" id="btnLogin">
-          <i class="bi bi-person-circle"></i> Iniciar sesión
-        </a>
+            <a class="boton-menu boton-login-admin" href="login.html" id="btnLogin">
+                <i class="bi bi-person-circle"></i> Iniciar sesión
+            </a>
 
-        <a class="boton-menu boton-login-admin" href="loginadmin.html" id="btnVendedor">
-          <i class="bi bi-bag-fill"></i> ¿Eres Vendedor?
-        </a>
+            <a class="boton-menu boton-login-admin" href="loginadmin.html" id="btnVendedor">
+                <i class="bi bi-bag-fill"></i> ¿Eres Vendedor?
+            </a>
 
-        <nav>
-          <ul class="menu">
-            <li>
-              <button id="todos" class="boton-menu boton-categoria active">
-                <i class="bi bi-hand-index-thumb-fill"></i> Todos los productos
-              </button>
-            </li>
-            <li>
-              <button id="abrigos" class="boton-menu boton-categoria">
-                <span class="icono-categoria">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                       stroke-linejoin="round" class="icon icon-tabler icon-tabler-jacket">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 19a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-8.172a2 2 0 0 1 .586 -1.414l.828 -.828a2 2 0 0 0 .586 -1.414v-2.172a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v2.172a2 2 0 0 0 .586 1.414l.828 .828a2 2 0 0 1 .586 1.414v8.172a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z" />
-                    <path d="M12 19v-11" />
-                  </svg>
-                </span>
-                Abrigos
-              </button>
-            </li>
-            <li>
-              <button id="camisetas" class="boton-menu boton-categoria">
-                <span class="icono-categoria">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                       stroke-linejoin="round" class="icon icon-tabler icon-tabler-shirt">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
-                  </svg>
-                </span>
-                Camisetas
-              </button>
-            </li>
-            <li>
-              <button id="pantalones" class="boton-menu boton-categoria">
-                <span class="icono-categoria">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"
-                       stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="14" y="6" width="36" height="6" rx="1" />
-                    <path d="M16 12 L16 58 Q16 60 18 60 L26 60 Q28 60 28 58 L32 30 L36 58 Q36 60 38 60 L46 60 Q48 60 48 58 L48 12" />
-                    <line x1="32" y1="12" x2="32" y2="30" />
-                  </svg>
-                </span>
-                Pantalones
-              </button>
-            </li>
-            <li>
-              <a class="boton-menu boton-carrito" href="./carrito.html">
-                <i class="bi bi-cart-fill"></i> Carrito
-                <span id="numerito" class="numerito">0</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <footer>
-          <p class="texto-footer">© 2025 Juan Jose Hernandez Garcia</p>
-        </footer>
-      </aside>
-      <main>
-        <h2 class="titulo-principal" id="titulo-principal">
-          Todos los productos
-        </h2>
-        <div id="contenedor-productos" class="contenedor-productos">
-          <!-- Esto se va a rellenar con JS -->
-        </div>
-      </main>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <button id="todos" class="boton-menu boton-categoria active">
+                            <i class="bi bi-hand-index-thumb-fill"></i> Todos los productos
+                        </button>
+                    </li>
+                    <li>
+                        <button id="abrigos" class="boton-menu boton-categoria">
+                            <span class="icono-categoria">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-jacket">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 19a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-8.172a2 2 0 0 1 .586 -1.414l.828 -.828a2 2 0 0 0 .586 -1.414v-2.172a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v2.172a2 2 0 0 0 .586 1.414l.828 .828a2 2 0 0 1 .586 1.414v8.172a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2z" />
+                                    <path d="M12 19v-11" />
+                                </svg>
+                            </span>
+                            Abrigos
+                        </button>
+                    </li>
+                    <li>
+                        <button id="camisetas" class="boton-menu boton-categoria">
+                            <span class="icono-categoria">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-shirt">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
+                                </svg>
+                            </span>
+                            Camisetas
+                        </button>
+                    </li>
+                    <li>
+                        <button id="pantalones" class="boton-menu boton-categoria">
+                            <span class="icono-categoria">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="14" y="6" width="36" height="6" rx="1" />
+                                    <path d="M16 12 L16 58 Q16 60 18 60 L26 60 Q28 60 28 58 L32 30 L36 58 Q36 60 38 60 L46 60 Q48 60 48 58 L48 12" />
+                                    <line x1="32" y1="12" x2="32" y2="30" />
+                                </svg>
+                            </span>
+                            Pantalones
+                        </button>
+                    </li>
+                    <li>
+                        <a class="boton-menu boton-carrito" id="btnCarrito" href="#">
+                            <i class="bi bi-cart-fill"></i> Carrito
+                            <span id="numerito" class="numerito">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="texto-footer">© 2025 Juan Jose Hernandez Garcia</p>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="titulo-principal" id="titulo-principal">
+                Todos los productos
+            </h2>
+            <div id="contenedor-productos" class="contenedor-productos">
+                </div>
+        </main>
     </div>
 
-    <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
     <script>
-      // Tu configuración de Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyDyfxPBw2xOu318mAtdYM03G_DmdZMPa1E",
-        authDomain: "e-commerce-b80a9.firebaseapp.com",
-        databaseURL: "https://e-commerce-b80a9-default-rtdb.firebaseio.com",
-        projectId: "e-commerce-b80a9",
-        storageBucket: "e-commerce-b80a9.firebasestorage.app",
-        messagingSenderId: "708561821036",
-        appId: "1:708561821036:web:5e1811527bdaee9a6fa749",
-        measurementId: "G-RDLKX5XZ30"
-      };
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDyfxPBw2xOu318mAtdYM03G_DmdZMPa1E",
+            authDomain: "e-commerce-b80a9.firebaseapp.com",
+            databaseURL: "https://e-commerce-b80a9-default-rtdb.firebaseio.com",
+            projectId: "e-commerce-b80a9",
+            storageBucket: "e-commerce-b80a9.firebasestorage.app",
+            messagingSenderId: "708561821036",
+            appId: "1:708561821036:web:5e1811527bdaee9a6fa749",
+            measurementId: "G-RDLKX5XZ30"
+        };
 
-      // Inicializar Firebase (y hacerlo accesible globalmente)
-      firebase.initializeApp(firebaseConfig);
-
-      // Instancias GLOBALES para usar en tus scripts JS
-      const db = firebase.firestore();
-      const auth = firebase.auth();
-
-      console.log("Conexión a Firestore y Auth lista.");
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./js/productos.js"></script>
-    <script src="./js/sesion.js"></script>
     <script src="./js/menu.js"></script>
+
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const botones = document.querySelectorAll(".boton-categoria");
-        botones.forEach(boton => {
-          boton.addEventListener("click", () => {
-            botones.forEach(b => b.classList.remove("active"));
-            boton.classList.add("active");
-            const categoria = boton.id;
-            if (categoria === "todos") {
-              mostrarTodos(); // Función para mostrar todos los productos
-            } else {
-              mostrarCategoria(categoria); // Función para mostrar productos por categoría
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. MANEJO DE CATEGORÍAS
+            const botones = document.querySelectorAll(".boton-categoria");
+            botones.forEach(boton => {
+                boton.addEventListener("click", () => {
+                    botones.forEach(b => b.classList.remove("active"));
+                    boton.classList.add("active");
+                    const categoria = boton.id;
+                    if (categoria === "todos") {
+                        mostrarTodos();
+                    } else {
+                        mostrarCategoria(categoria);
+                    }
+                });
+            });
+            mostrarTodos();
+
+            // 2. VERIFICAR SESIÓN AL CARGAR (UI)
+            const sesion = JSON.parse(localStorage.getItem('usuarioLogueado'));
+            const btnLogin = document.getElementById("btnLogin");
+            const btnVendedor = document.getElementById("btnVendedor");
+            const divUsuario = document.getElementById("usuario-conectado");
+            const bienvenida = document.getElementById("bienvenida");
+            const btnLogout = document.getElementById("btnLogout");
+
+            if (sesion) {
+                if (btnLogin) btnLogin.style.display = "none";
+                if (btnVendedor) btnVendedor.style.display = "none";
+                if (divUsuario) divUsuario.style.display = "block";
+                if (bienvenida) bienvenida.innerText = `Hola, ${sesion.nombre}`;
             }
-          });
+
+            // 3. CERRAR SESIÓN
+            if (btnLogout) {
+                btnLogout.addEventListener("click", () => {
+                    localStorage.removeItem('usuarioLogueado');
+                    window.location.reload();
+                });
+            }
+
+            // 4. LÓGICA DEL BOTÓN CARRITO (REDIRECCIÓN A PAGO)
+            const btnCarrito = document.getElementById("btnCarrito");
+            if (btnCarrito) {
+                btnCarrito.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    
+                    const usuarioActivo = localStorage.getItem('usuarioLogueado');
+
+                    if (usuarioActivo) {
+                        // Si hay sesión, va a carrito.html
+                        window.location.href = "carrito.html";
+                    } else {
+                        // Si no hay sesión, muestra alerta
+                        Toastify({
+                            text: "Debes iniciar sesión para acceder al pago",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            stopOnFocus: true,
+                            style: {
+                                background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                            },
+                        }).showToast();
+
+                        // Opcional: Redirigir a login tras la alerta
+                        setTimeout(() => {
+                            window.location.href = "login.html";
+                        }, 2000);
+                    }
+                });
+            }
         });
-        mostrarTodos(); // Muestra todos los productos al cargar la página
-      });
     </script>
-  </body>
+</body>
 </html>

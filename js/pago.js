@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 🚨 ASUME que 'db' (Firestore), 'Swal' y 'firebase' (para serverTimestamp) son globales.
-    
+    // 🚨 ASUME que 'db' (Firestore), 'Swal' y 'firebase' son globales.
     const formulario = document.getElementById("formulario-pago");
 
     // ============================================
-    // OBTENEMOS TODOS LOS CAMPOS (IDs ya verificados en el HTML)
+    // OBTENEMOS TODOS LOS CAMPOS DEL HTML
     // ============================================
     const emailInput = document.getElementById("email");
     const nombreInput = document.getElementById("nombre");
@@ -21,81 +20,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const vencimientoInput = document.getElementById("vencimiento");
     const nombreTitularInput = document.getElementById("nombre-titular");
 
-    // Comprobación de que todos los IDs fueron encontrados (se mantiene para seguridad)
+    // Validación de existencia de elementos
     if (!emailInput || !nombreInput || !apellidoInput || !calleInput || !numeroExtInput || !coloniaInput || !ciudadInput || !estadoInput || !cpInput || !telefonoInput || !tarjetaInput || !codigoSeguridadInput || !vencimientoInput || !nombreTitularInput) {
         Swal.fire("ERROR", "Faltan elementos de formulario en el HTML. Verifique los IDs.", "error");
         return; 
     }
 
     // ============================================
-    // VALIDACIÓN: SOLO NÚMEROS Y LÍMITES (EN TIEMPO REAL)
+    // FUNCIONES DE RESTRICCIÓN (REGEX)
     // ============================================
 
-    // Teléfono → solo números, MÁXIMO 10 DÍGITOS. Eliminada la lógica de "+52".
-    telefonoInput.addEventListener("input", () => {
-        telefonoInput.value = telefonoInput.value.replace(/[^\d]/g, "").slice(0, 10);
-    });
+    // Restricción: Solo letras, espacios y tildes (Bloquea números y @,.;)
+    const validarSoloLetras = (e) => {
+        e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+    };
 
-    // Código postal → solo números, máximo 6
-    cpInput.addEventListener("input", () => {
-        cpInput.value = cpInput.value.replace(/[^\d]/g, "").slice(0, 6);
-    });
-
-    // Número de tarjeta → solo números, máximo 16
-    tarjetaInput.addEventListener("input", () => {
-        tarjetaInput.value = tarjetaInput.value.replace(/[^\d]/g, "").slice(0, 16);
-    });
-
-    // Código de seguridad → solo números, máximo 3
-    codigoSeguridadInput.addEventListener("input", () => {
-        codigoSeguridadInput.value = codigoSeguridadInput.value.replace(/[^\d]/g, "").slice(0, 3);
-    });
+    // Restricción: Solo números y límite de caracteres
+    const validarSoloNumeros = (e, max) => {
+        e.target.value = e.target.value.replace(/[^\d]/g, "").slice(0, max);
+    };
 
     // ============================================
-    // FORMATO AUTOMÁTICO Y VALIDACIÓN DE MM/AA (Mes y Año)
+    // ASIGNACIÓN DE VALIDACIONES EN TIEMPO REAL
     // ============================================
 
+    // Campos de solo letras
+    nombreInput.addEventListener("input", validarSoloLetras);
+    apellidoInput.addEventListener("input", validarSoloLetras);
+    ciudadInput.addEventListener("input", validarSoloLetras);
+    estadoInput.addEventListener("input", validarSoloLetras);
+    nombreTitularInput.addEventListener("input", validarSoloLetras);
+
+    // Campos de solo números
+    telefonoInput.addEventListener("input", (e) => validarSoloNumeros(e, 10));
+    cpInput.addEventListener("input", (e) => validarSoloNumeros(e, 6));
+    tarjetaInput.addEventListener("input", (e) => validarSoloNumeros(e, 16));
+    codigoSeguridadInput.addEventListener("input", (e) => validarSoloNumeros(e, 3));
+    numeroExtInput.addEventListener("input", (e) => validarSoloNumeros(e, 10));
+
+    // Formato automático MM/AA para vencimiento
     vencimientoInput.addEventListener("input", (e) => {
         let valor = e.target.value.replace(/[^\d]/g, ""); 
-
         if (valor.length >= 3) {
             valor = valor.slice(0, 2) + "/" + valor.slice(2, 4);
         }
-
         e.target.value = valor.slice(0, 5);
     });
 
-    vencimientoInput.addEventListener("blur", () => {
-        const valor = vencimientoInput.value;
-
-        if (!/^\d{2}\/\d{2}$/.test(valor)) {
-            Swal.fire("Formato incorrecto", "Use MM/AA", "error")
-                .then(() => { vencimientoInput.focus(); });
-            return;
-        }
-
-        let [mes, año] = valor.split("/").map(n => parseInt(n));
-        
-        // RESTRICCIÓN 1: Mes (1-12)
-        if (mes < 1 || mes > 12) {
-            Swal.fire("Mes inválido", "El mes debe ser entre 01 y 12", "error")
-                .then(() => { vencimientoInput.focus(); });
-            return;
-        }
-
-        // RESTRICCIÓN 2: Año (de 25 a 99)
-        const añoMinimo = 25; 
-        const añoMaximo = 99;
-        
-        if (año < añoMinimo || año > añoMaximo) {
-            Swal.fire("Año inválido", `El año debe ser entre ${añoMinimo} y ${añoMaximo}`, "error")
-                .then(() => { vencimientoInput.focus(); });
-            return;
-        }
-    });
-
     // ============================================
-    // RESUMEN DE COMPRA (MANTENIDO)
+    // RESUMEN DE COMPRA (Lógica de Precios)
     // ============================================
     const productos = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
     const detalle = document.getElementById("detalle-pedido");
@@ -104,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalDOM = document.getElementById("resumen-total");
 
     let subtotal = 0;
-
     productos.forEach(p => {
         const item = document.createElement("p");
         item.textContent = `${p.titulo} x${p.cantidad} - $${(p.precio * p.cantidad).toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
@@ -112,36 +84,33 @@ document.addEventListener("DOMContentLoaded", () => {
         subtotal += p.precio * p.cantidad;
     });
 
-    const envio = subtotal >= 1000 ? 0 : 139;
+    const envio = (subtotal >= 1000 || subtotal === 0) ? 0 : 139;
     const total = subtotal + envio;
 
     subtotalDOM.textContent = `$${subtotal.toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
-    envioDOM.textContent = envio === 0 ? "Gratis" : `$${envio.toLocaleString('es-MX')}`;
+    envioDOM.textContent = envio === 0 ? "Gratis" : `$${envio.toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
     totalDOM.textContent = `$${total.toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
 
     // ============================================
-    // ENVÍO DEL FORMULARIO Y GUARDADO EN FIRESTORE
+    // ENVÍO DEL FORMULARIO A FIRESTORE
     // ============================================
-
     formulario.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // 1. VALIDACIONES FINALES
-        // CRÍTICO: Se valida ahora 10 dígitos exactos, asumiendo que el usuario ingresa solo los números
+        // Validaciones de longitud mínima antes de enviar
         if (telefonoInput.value.length !== 10) { 
             Swal.fire("Error", "El teléfono debe tener 10 dígitos.", "error");
-            return;
-        }
-        if (cpInput.value.length < 5 || cpInput.value.length > 6) {
-            Swal.fire("Error", "El código postal debe tener entre 5 y 6 dígitos.", "error");
             return;
         }
         if (tarjetaInput.value.length !== 16) {
             Swal.fire("Error", "La tarjeta debe tener 16 dígitos.", "error");
             return;
         }
+        if (codigoSeguridadInput.value.length !== 3) {
+            Swal.fire("Error", "El código de seguridad (CVV) debe tener 3 dígitos.", "error");
+            return;
+        }
 
-        // 2. OBTENER ID DE USUARIO
         const usuarioDataString = localStorage.getItem('usuarioLogueado');
         if (!usuarioDataString) {
             Swal.fire("Error de Sesión", "Debe iniciar sesión para realizar la compra.", "error");
@@ -149,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const userID = JSON.parse(usuarioDataString).uid;
         
-        // 3. DATOS A GUARDAR EN USUARIOS
+        // Estructura de datos para actualizar el Usuario
         const datosUsuarioUpdate = {
             EmailU: emailInput.value.trim(),
             NombreU: nombreInput.value.trim(),
@@ -171,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // 4. DATOS A GUARDAR EN PEDIDOS
+        // Estructura para la colección de Pedidos
         const articulosPedido = productos.map(p => ({
             ProductoId: p.id,
             NombreP: p.titulo,
@@ -190,31 +159,23 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         
         try {
-            // 5. ACTUALIZAR DATOS DE USUARIO (Requiere 'allow update')
+            // Actualizar perfil del usuario y crear el pedido simultáneamente
             await db.collection("Usuarios").doc(userID).set(datosUsuarioUpdate, { merge: true });
-            console.log(`✅ Datos de usuario actualizados para ID: ${userID}`);
-
-            // 6. CREAR NUEVO PEDIDO (Requiere 'allow create')
             await db.collection("Pedidos").add(datosPedidoNew);
-            console.log("✅ Nuevo pedido guardado en la colección Pedidos.");
 
-            // 7. CONFIRMACIÓN Y REDIRECCIÓN
             Swal.fire({
                 title: 'Pago exitoso',
-                html: `
-                    <p>Gracias por su compra en <strong>Stilø</strong> 💳</p>
-                    <p>Su pedido ha sido procesado correctamente.</p>
-                `,
+                html: `<p>¡Gracias por tu compra en <strong>Stilø</strong>! 💳</p><p>Tu pedido está siendo procesado.</p>`,
                 icon: 'success',
-                confirmButtonText: 'Volver al inicio'
+                confirmButtonText: 'Finalizar'
             }).then(() => {
                 localStorage.removeItem("productos-en-carrito");
                 window.location.href = "index.html";
             });
 
         } catch (error) {
-            console.error("❌ ERROR durante el proceso de pago en Firestore:", error);
-            Swal.fire("Error de Pago", "Ocurrió un error al procesar y guardar su pedido. Revise la consola y sus reglas de Firebase.", "error");
+            console.error("❌ Error en Firestore:", error);
+            Swal.fire("Error de Red", "No se pudo completar la transacción. Intente más tarde.", "error");
         }
     });
 });

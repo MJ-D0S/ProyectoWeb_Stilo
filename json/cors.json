@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["https://celebrated-kangaroo-9e0b18.netlify.app"],
+    "method": ["GET", "PUT", "POST", "DELETE", "HEAD"],
+    "maxAgeSeconds": 3600
+  }
+]

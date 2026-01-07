@@ -60,31 +60,40 @@ CREATE TABLE Productos (
     FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
     FOREIGN KEY (VendedorID) REFERENCES Vendedor(VenID)
 );
+
 CREATE TABLE Carrito (
+    CarritoID INT NOT NULL PRIMARY KEY,
+    UsuarioID INT NOT NULL
+);
+
+CREATE TABLE CarritoDetalle (
     CarritoID INT NOT NULL,
     ProductoID INT NOT NULL,
     Cantidad INT,
     PRIMARY KEY (CarritoID, ProductoID),
+    FOREIGN KEY (CarritoID) REFERENCES Carrito(CarritoID),
     FOREIGN KEY (ProductoID) REFERENCES Productos(PID)
 );
+
+
 CREATE TABLE Pedidos (
-    PedidoID INT NOT NULL,
+    PedidoID INT NOT NULL PRIMARY KEY,
     CarritoID INT NOT NULL,
-    ProductoID INT NOT NULL,
     UsuarioID INT NOT NULL,
     FechaPedido DATETIME,
     Estado NVARCHAR(50),
-    PRIMARY KEY (PedidoID),
     FOREIGN KEY (CarritoID) REFERENCES Carrito(CarritoID),
-    FOREIGN KEY (ProductoID) REFERENCES Productos(PID),
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UId)
 );
 INSERT INTO Categoria (CategoriaID, NombreCategoria) VALUES
 (1, 'Abrigos'),
-(2, 'Camisas');
+(2, 'Camisas'),
+(3, 'Pantalones');
+
 INSERT INTO Tarjeta (TarjetaID, NumeroTarjeta, Fechadevencimiento, Codigodeseguridad) VALUES
 (1, 41432467453235678, '2028-11-21', 103),
 (2, 55032452156364214, '2027-05-31', 542);
+
 
 INSERT INTO MetodoPago (MetodoPagoID, TarjetaID) VALUES
 (1, 1),
@@ -102,13 +111,20 @@ INSERT INTO Vendedor (VenID, NombreV, Apellidos, CorreoElectronico, Contrasenia)
 (2, 'Laura', 'Torres', 'lauratomodow@gmail.com', 'KLD4223');
 
 INSERT INTO Productos (PID, NombreP, CategoriaID, Precio, ImagenURL, VendedorID, EstaActivo) VALUES
-(1, 'Puffer Azul Marino', 1, "abrigos", 396.00, "./img/abrigos/01.jpg", 1, 1),
-(2, 'Camiseta Azul Oscuro ClÃ¡sica', 2, 99.99, './img/camisetas/02.jpg', 2, 1);
+(1, 'Puffer Azul Marino', 1, 396.00, './img/abrigos/01.jpg', 1, 1),
+(2, 'Blazer Casual Negro', 1, 396.00, './img/abrigos/02.jpg', 1, 1),
+(3, 'Camiseta Azul Oscuro Clásica', 2, 99.00, './img/camisetas/01.jpg', 2, 1),
+(4, 'Pantalón Beige Casual', 3, 169.00, './img/pantalones/01.jpg', 1, 1);
 
-INSERT INTO Carrito (CarritoID, ProductoID, Cantidad) VALUES
+INSERT INTO Carrito (CarritoID, UsuarioID) VALUES
+(1, 1),
+(2, 2);
+
+INSERT INTO CarritoDetalle (CarritoID, ProductoID, Cantidad) VALUES
 (1, 1, 2),
 (2, 2, 1);
 
-INSERT INTO Pedidos (PedidoID, CarritoID, ProductoID, UsuarioID, FechaPedido, Estado) VALUES
-(1, 1, 1, 1, '2025-06-07 10:30:00', 'Pendiente'),
-(2, 2, 2, 2, '2025-06-07 11:00:00', 'Enviado');
+INSERT INTO Pedidos (PedidoID, CarritoID, UsuarioID, FechaPedido, Estado) VALUES
+(1, 1, 1, '2025-06-07 10:30:00', 'Pendiente'),
+(2, 2, 2, '2025-06-07 11:00:00', 'Enviado');
+
